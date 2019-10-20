@@ -1,42 +1,21 @@
 <template>
   <div id="app">
-    <ul>
-      <li><router-link to = "/">Overview </router-link></li>
-      <li><router-link to = "/follower">Follower ({{user.followers}}) </router-link></li>
-      <li><router-link to = "/following">Following ({{user.following}})</router-link></li>
-    </ul>
-  <router-view>
-  </router-view>
+      <div class="column is-three-fifths is-offset-one-fifth">
+          <div class="tabs is-medium is-centered col-md-9">
+            <ul>
+              <li class="is-active"><router-link to="/"><a>Repository</a></router-link></li>
+              <li><router-link to="/profile"><a>Profile</a></router-link></li>
+            </ul>
+          </div>
+          <router-view>
+          </router-view>
+      </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'app',
-  data() {
-    return {
-      user: {
-        followers: 0,
-        following: 0,
-      },
-    };
-  },
-  components: {
-
-  },
-  methods: {
-    getProfile() {
-      fetch('https://api.github.com/users/bagusfaisal24')
-        .then(r => r.json())
-        .then((data) => {
-          this.user = data;
-        })
-        .catch(e => console.log(e));
-    },
-  },
-  mounted() {
-    this.getProfile();
-  },
 };
 </script>
 
@@ -46,7 +25,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #00503e;
+  margin-top: 10px;
 }
 </style>
